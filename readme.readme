@@ -1,179 +1,30 @@
-#vedio- 3
-->created package.json file and made folder server inside mern2..inside server we installed express in cmd and started server in new file server.json
-->installed nodemon
+# MERN Project
 
-#vedio- 4
-->setting up routers
-created new fodler routet inside server only , created new file auth-router.js. basically wrote al my rooutes here instead of writng in my main file server.js
-remember to export route file before using it in your main file server .js,
-IMPORTANT !!!!!!!=> BE CAREFUL TO WRITE module.exports ...must write s with export otherwise wont work.
-remember to write app.use(route, filename)
+## Introduction
 
-#vedio-5
-->setting up controllers
+This project is a web application built using the MERN stack, which includes MongoDB, Express.js, React, and Node.js.
 
-#vedio5
-->registration with postman
+## Features
 
-#vedio6
-->connecting backend with db -> used atlas put url from cmd to db.js and server connected
+- User Authentication (Sign up, Login, Logout)
+- CRUD Operations for [specific resource]
 
-#vedio7
-->installed package from npm
-->added .env file to protect our secret key means passowrd in connection. created file .env in main file (server.js)
+## Technologies Used
 
-#vedio9
-->creating Userschema and model and export it
+- **MongoDB**: A NoSQL database for storing data.
+- **Express.js**: A web application framework for Node.js.
+- **React**: A JavaScript library for building user interfaces.
+- **Node.js**: A JavaScript runtime for server-side development.
 
-#vedio10
-->adding data in our database
-first required User from auth-controller.. checking ifuser already exist or not...
+### Prerequisites
 
-#vedio11
-->hashing our password = install bcrypt package
+- Node.js (v12 or higher)
+- MongoDB
 
-#vedio12
-->secure user authentication with jwt=> it makes sure ki h current user h apke page p vo genuine he ya nahi
-->structure = header, payload , signature
-->never store jwtin db, always store it in client sidei form of cookies or local storage
+### Steps
 
-#vedio13
-user login route functionality
-->same logic as of registration
-->just fetch user email and passowrd using request.body..then check if that userexist ot not by model User.findOne, agr exist nahi karta to inavlid user he amd if userexist to user ka typed passowrd or database m jo password he use compare karowao agr match kiya to reposnse.200 bhejo json me varna kaho email ya passowrd invaid he
-->after that generate token and send it to client side
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/YourUsername/mern-project.git
+   cd mern-project
 
-#vedio14
-->just making a function for passowrd compare and defining it in models
-
-#vedio15
-->ZOD FORM VALIDATION..improving our sschema..adding validation as our backend..installing package
--made a new folder validator > new file auth-validator > required zod > inside that wrote zod validation (defined new schema) >export it
-->made another middleware folder > made a file middleware-valid.js > inside validate func we send our schema and handled error statements..it gives two type of things > issues and errror..> we selected error
-->then finally required validate and signuschema in route file and validate before regstration
-
-#vedio16
-->error handling through experess (error middleware) > backendk jitne bhi error h usko ek file m add kar rahe he and later we ll pass that errors to frontend
--?rememebr to add app.use(errormiddleware) before starting serer in main file
-->agr hmari application m kisi bhi page(login , contact) kahi bhi error aa raha he to just udhar next() pass kar dena vo error middleware vale page pr chla jaega and vha vo handle hoga..ab har page p handle nahi karna error bs next() likh do sb ho jaega
-
-#vedio17
-->building contacta form (schema , route, logic)
-->created new schema in model folder > define route for this > made new file in route > contact-router.js > and uska logic we wrote at controllers folder >contact-controller.js > then we went ot server > app.use() set up route    
-
-
-#############################################   BACKEND COMPLETED   #################################
-
-#vedio19
-->react with vite > made a diffrent folder oustide server one > client
-
-#vedio20
-->page navigation using react router dom > install react router dom using npm > created pages folder in src and created contact, register, services etc pages.
-
-#vedio21
-->bulidng navlinks > created navbar > as we want that navbar in every page , so we wrote it below browserrouter in app.jsx > instead of a tag we wrote Navlink.
-
-#vedio22
-registration form ui > made one usestate and made an object for all filds rather than creating multiple usestates >
-
-#vedio23
-loginform ui> storing lagin from data in react state
-
-#vedio24
-home pages
-->pattern to make it > make header tag > inside it create a div(container) and make it flex > create one div for logo and one nav tag for links and make main div i.e container flex > so that y logo aur links left right ho jae > and give ul also flex
-header over
-
-->make main tag > create section > inside section create div (grid) >inside grid div create two divs > one for text(left side) , one for iamge (right side)
->left side add text, heading ,para, and another id v for buttons > give mage div flex
-main tag over
-
-->created section for footer > created a div(make it grid /flrx) >inside that make 4 div and make parent div flex and do space between> 
-footer over
-
-->made another section like first one this time we r just palcin image at left and text at right rest same
-over 3 section
-
-completed home ui. simple
-
-#vedio24
-->working contact form with react > we store our data in react state so that later we can pass it backend parent
->almost same styling like login page, added google map link also
-
-#vedio25 
-404 page, remaining styling > donw ith fronted part > now we ll connect it with backend\
-
-#vedio26
-->connect react with nodejs and mongodb
-->phele jo m data postman m fill krke database ko pass kar rha tha..ab react k through data backend m pass karna he aur db m store karna he
-->simplest..> just go in register page..use fetch(localhost link) give comma > pass parameters like same in postman > headers , content-type, body > put them in a try catch block
--> then u ll get a cors error coz sever is running at diffrent port and localhost at diffrent.....>tell server if there is any response from localhost 5173 is our part of family only by using middleware cors
->used cors npm package to tell our server that frontend part is our only...
-
-#vedio27
-->now login page 
-same as register vala logic..just see (spend 2 days to fix the error..must read each line carefully of this and register.jsx)
-
-#vedio28
-store JWT Token in local storage
-
-#vedio29
-how to logout and toggle login logout button
-->ek time p ya to register login button show hoga ya to sirf logout vala show hoga..teeno ek sath ashow nahi karenge
-->logout button click krne p token remove kr denge local storage se
-
-#vedio30
-jwt authentication...humne get to kar liya h pr verify bhi karna h , ki vo token same h ya nahi
-->iska means ye he ki user n login kiya h ya nahi , tb hi files, pages show karaenge varna nahi..
-
-#vedio31
-->and we also saw ki user k data ko use karke we ll show in home hi ayush saxena welcome to our website ..esa karke.means autofilled contact fields with user data from database
-
-#vedio32
-->brought functionality of welcome (usernmae) if he is logged in. at about page.
-
-#vedio33
-->created api +service backend
-->created new collection in atlas named services and pasted an api from gpt now fetching that data 
-->first create model for that > in models folder > service-model > created route for service > then define function services which we wrote in our route in service-controller file > tested by postman
-
-#vedio34
-displaying services (backend) se ui pr react se
-->easy he
->first wrote code for ui in servicefile > ek aur func useeffect m call kar do auth.jsx me aur use provider m bhej do..phir use koi bhi kahi se bhi use kar sakta he
->wrote funct > fetch services data throughfetch and consoled it > then passde that data to provider through usestate > and simply used map method to disaply it in ui
-                                            
-#vedio35
-showing alert if therer is invalid input fields entered. we are getting that alerts after fetching it from backend
-
-#vedio36
-react tostify -> better than simple alert
-
-#vedio37
-login krne k baad refresh karne pr logout ka button show ho rha tha to use fix kar displaying
-
-#vedio39
-admin panel
->created admin-users page at routerfolderand wrote function of that in controllers > get my users through it > and used postman
-
-#vedio40
-->same work as vedio39
-admin panel >contact route
-->created contact route > wrote function in controllers > tested through postman
-
-#vedio41
-->probelms till here -> koi bhi ek route ho to usko koi bhi access akr le rha h contact, user (through postman)
-->i mean doestn matter u r admin or not, agr app normal user bhi ho tb bhi data ko access kar le rahe ho..which is worng > to tackle it our first step iswether user is login or not thriugh token...> use authmiddleware for that
->next step is to check wether isadmin is true or not
-
-#vedio42
-->verifying user is admin or not > mtlb jisne login kiya to kya vo admin he ya nhai > agar h tb h data dikhaenge
->sbse phele we did isadmin true of any data in user from atlas > saxena@gmailko we did true > to isi ko data dikhega > for that we created new middleware admin middleware
-
-#vedio43
-->admin panel navigation(diffrent than website vala..ise sirf admin h access karenge)
->create new fodler layouts in cleint and create nested routes in app.jsx > made pages for users contact srevices for admin > for nested routes use outlet from react routet dom
->used react icons .
-
-#vedio44
->showing users data in admin panel
